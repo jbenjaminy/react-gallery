@@ -15,14 +15,15 @@ describe('Gallery component', function() {
     var renderer = TestUtils.createRenderer();
     renderer.render(<Gallery images={images}/>);
     var result = renderer.getRenderOutput();
-    console.log(result, '<result');
+    console.log(result.props.children[0], '<result.props.children');
+    console.log(result.props.children[0].props, '<children.props');
+    console.log(result.props.children[0].type, '<children.type');
 
     result.props.className.should.equal('gallery');
     result.type.should.equal('div');
     result.props.children.length.should.equal(2);
 
     var img1 = result.props.children[0].props.children[0];
-    console.log(img1, '<img1');
 	// img1.props.children[0].type.should.equal('img');
     img1.src.should.equal(images[0].url);
     img1.alt.should.equal(images[0].description);
@@ -30,7 +31,6 @@ describe('Gallery component', function() {
     img1.children[1].type.should.equal('p');
 
     var img2 = result.props.children[1].props.children[0];
-    console.log(img2, '<img2');
 	// img2.props.children[0].type.should.equal('img');
     img2.src.should.equal(images[1].url);
     img2.alt.should.equal(images[1].description);
