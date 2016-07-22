@@ -14,7 +14,10 @@ describe('Image component', function() {
         var result = renderer.getRenderOutput();
         result.props.className.should.equal('gallery-image');
 
+        console.log(result, '<image result');
+        console.log(result.props, '<image props');
         var img = result.props.children[0];
+        console.log(img, '<img')
         img.type.should.equal('img');
         img.props.src.should.equal(url);
         img.props.alt.should.equal(description);
